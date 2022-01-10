@@ -4,21 +4,34 @@ alert(
   "XO'SH KELIBSIZ, Alisher! \nBorish-kelish samalyot bileti - $500 \nMehmonxona to'lovi - $250 \nMuzey va ko'ngilochar joylar uchun - €120 "
 );
 
-var aviaTicket = 500;
-var hotelPrice = 250;
-var entertainmentPrice = 120;
+var aviaTicketUSD = 500;
+var hotelPriceUSD = 250;
+var entertainmentPriceEURO = 120;
 
-var aviaSum = Math.round(aviaTicket * 9433.34);
-var hotelSum = Math.round(hotelPrice * 9433.34);
-var entertainmentSum = Math.round(entertainmentPrice * 10354.03);
+var USD_TO_SUM = 9433.34;
+var EURO_TO_SUM = 10354.03;
 
-var totalSum = aviaSum + hotelSum + entertainmentSum;
+var totalPrice =
+  aviaTicketUSD * USD_TO_SUM +
+  hotelPriceUSD * USD_TO_SUM +
+  entertainmentPriceEURO * EURO_TO_SUM;
 
-console.log("Umumiy Xarajatlar: " + totalSum);
+console.log("Umumiy xarajat: " + Math.round(totalPrice) + " so'm");
+
+// AVOID MAGIC NUMBERS !!!
+
+// var aviaSum = Math.round(aviaTicket * 9433.34);
+// var hotelSum = Math.round(hotelPrice * 9433.34);
+// var entertainmentSum = Math.round(entertainmentPrice * 10354.03);
+
+// var totalSum = aviaSum + hotelSum + entertainmentSum;
+
+// console.log("Umumiy Xarajatlar: " + totalSum);
 
 var userBudget = Number(prompt("Mablag'ingizni kiriting:", "0 so'm"));
 
-if (userBudget >= totalSum) {
+// Validate Alisher's budget
+if (totalPrice <= userBudget) {
   elResultHeading.textContent = "Oq yo'l, Alisher! Safaringiz yaxshi o'sin!";
 } else {
   elResultHeading.textContent =
